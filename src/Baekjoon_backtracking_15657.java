@@ -41,25 +41,17 @@ public class Baekjoon_backtracking_15657 {
         }
 
         graph = new int[N][N];
-        System.out.println(ascSortedNumbers);
-        for (int fromIndex = 0; fromIndex < N; fromIndex++) {
-            List<Integer> connectedNumbers = new ArrayList<>();
-            for (int toIndex = 0; toIndex < N; toIndex++) {
-
-                if (fromIndex != toIndex && connectedNumbers.indexOf(ascSortedNumbers.get(toIndex)) == -1) {
+        // System.out.println(ascSortedNumbers);
+        for (int fromIndex = 0; fromIndex < N; fromIndex++)
+            for (int toIndex = 0; toIndex < N; toIndex++)
+                if (fromIndex != toIndex)
                     graph[fromIndex][toIndex] = 1;
-                    connectedNumbers.add(ascSortedNumbers.get(toIndex));
-                }
-            }
-            // System.out.println(connectedNumbers);
-        }
-
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                System.out.print(graph[i][j] + " ");
-            }
-            System.out.println();
-        }
+        // for (int i = 0; i < N; i++) {
+        // for (int j = 0; j < N; j++) {
+        // System.out.print(graph[i][j] + " ");
+        // }
+        // System.out.println();
+        // }
 
         for (int startIndex = 0; startIndex < N; startIndex++)
             if (startIndex == 0
@@ -71,7 +63,7 @@ public class Baekjoon_backtracking_15657 {
     public static void dfs(int fromIndex) {
 
         printStack.add(fromIndex);
-
+        // System.out.println(printStack);
         for (int toIndex = 0; toIndex < N; toIndex++)
             if (printStack.size() < M
                     && graph[fromIndex][toIndex] == 1
@@ -79,10 +71,14 @@ public class Baekjoon_backtracking_15657 {
                 dfs(toIndex);
             }
         if (printStack.size() == M) {
+            StringBuilder tempLine = new StringBuilder();
             for (int i = 0; i < printStack.size(); i++) {
-                result.append(ascSortedNumbers.get(printStack.get(i)) + " ");
+                tempLine.append(ascSortedNumbers.get(printStack.get(i)) + " ");
             }
-            result.append("\n");
+            if (result.indexOf(tempLine.toString()) == -1) {
+                result.append(tempLine.toString());
+                result.append("\n");
+            }
         }
 
         printStack.remove(printStack.size() - 1);
