@@ -1,1 +1,1 @@
-"Baekjoon, Programmers" 
+Baekjoon Online Judge
