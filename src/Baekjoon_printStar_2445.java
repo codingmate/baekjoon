@@ -12,10 +12,9 @@ public class Baekjoon_printStar_2444 {
 		for (int row = 1; row <= 2 * N - 1; row++) {
 			String line;
 			if (row <= N) {
-				line = spaces(N - row) + stars(2 * row - 1);
+				line = stars(row) + spaces(2 * (N - row)) + stars(row);
 			} else {
-				line = spaces(row - N) + stars(4 * N - 2 * row - 1);
-				// line = spaces(row - N) + stars(2*N - 2*(row-N) - 1);
+				line = stars(N - (row - N)) + spaces(2 * (row - N)) + stars(N - (row - N));
 			}
 			result.append(line + "\n");
 		}
