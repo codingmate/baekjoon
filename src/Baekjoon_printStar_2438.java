@@ -10,12 +10,30 @@ public class Baekjoon_printStar_2438 {
 
 		StringBuilder result = new StringBuilder();
 		for (int row = 1; row <= N; row++) {
-			for (int i = 1; i <= row; i++) {
-				result.append("*");
-			}
+			result.append(stars(row));
 			result.append("\n");
 		}
 
 		System.out.print(result);
+	}
+
+	public static String stars(int count){
+		
+		StringBuilder result = new StringBuilder();
+		
+		for ( int i = 0; i < count; i++ ){
+			result.append("*");
+		}
+		return result.toString();
+	}
+
+	public static String spaces(int count){
+		
+		StringBuilder result = new StringBuilder();
+		
+		for ( int i = 0; i < count; i++ ){
+			result.append(" ");
+		}
+		return result.toString();
 	}
 }
