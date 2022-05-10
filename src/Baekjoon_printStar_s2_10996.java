@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Baekjoon_printStar_b3_10996 {
+public class Baekjoon_printStar_s2_10996 {
 
 	public static void main(String[] args) throws Exception {
 
@@ -9,15 +9,16 @@ public class Baekjoon_printStar_b3_10996 {
 		int N = Integer.parseInt(br.readLine());
 
 		StringBuilder result = new StringBuilder();
-		StringBuilder evenRowSet = new StringBuilder();
-		StringBuilder oddRowSet = new StringBuilder();
-		for (int i = 1; i <= (N % 2 == 1 ? N / 2 + 1 : N / 2); i++)
-			oddRowSet.append("* ");
-		for (int i = 1; i <= N / 2; i++)
-			evenRowSet.append(" *");
+		String setN = spaces(N - 1) + "*" + spaces(N - 2) + "*" + spaces(N - 2) + "*";
+		String setStartOrEnd = stars(N) + spaces(2 * N - 3) + stars(N);
+		String set = "*" + spaces(N - 2) + "*";
 
-		for (int row = 1; row <= 2 * N; row++) {
-			String rowLine = row % 2 == 0 ? evenRowSet.toString() : oddRowSet.toString();
+		for (int row = 1; row <= 2 * N - 1; row++) {
+			String rowLine = (row == 1 || row == 2 * N - 1) ? setStartOrEnd
+					: row == N ? setN
+							: spaces(row < N ? row - 1 : 2 * N - row - 1) + set.toString()
+									+ spaces(row < N ? 2 * (N - row) - 1 : 2 * (row - N) - 1)
+									+ set.toString();
 			result.append(rowLine + "\n");
 		}
 		result.deleteCharAt(result.lastIndexOf("\n"));
