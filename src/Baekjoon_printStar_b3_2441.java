@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Baekjoon_printStar_2445 {
+public class Baekjoon_printStar_b3_2441 {
 
 	public static void main(String[] args) throws Exception {
 
@@ -9,34 +9,29 @@ public class Baekjoon_printStar_2445 {
 		int N = Integer.parseInt(br.readLine());
 
 		StringBuilder result = new StringBuilder();
-		for (int row = 1; row <= 2 * N - 1; row++) {
-			String line;
-			if (row <= N) {
-				line = stars(row) + spaces(2 * (N - row)) + stars(row);
-			} else {
-				line = stars(N - (row - N)) + spaces(2 * (row - N)) + stars(N - (row - N));
-			}
-			result.append(line + "\n");
+		for (int row = 1; row <= N; row++) {
+			result.append(spaces(row-1) + stars(N-row+1));
+			result.append("\n");
 		}
 		result.deleteCharAt(result.lastIndexOf("\n"));
 		System.out.print(result);
 	}
 
-	public static String stars(int count) {
-
+	public static String stars(int count){
+		
 		StringBuilder result = new StringBuilder();
-
-		for (int i = 0; i < count; i++) {
+		
+		for ( int i = 0; i < count; i++ ){
 			result.append("*");
 		}
 		return result.toString();
 	}
 
-	public static String spaces(int count) {
-
+	public static String spaces(int count){
+		
 		StringBuilder result = new StringBuilder();
-
-		for (int i = 0; i < count; i++) {
+		
+		for ( int i = 0; i < count; i++ ){
 			result.append(" ");
 		}
 		return result.toString();
