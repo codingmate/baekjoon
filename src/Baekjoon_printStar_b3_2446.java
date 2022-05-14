@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Baekjoon_printStar_2446 {
+public class Baekjoon_printStar_b3_2446 {
 
 	public static void main(String[] args) throws Exception {
 

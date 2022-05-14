@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Baekjoon_printStar_2447 {
+public class Baekjoon_printStar_b3_2447 {
 
 	static int[][] matrix;
 	static int N;
