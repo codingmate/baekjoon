@@ -10,8 +10,8 @@ public class Baekjoon_printStar_b3_2441 {
 
 		StringBuilder result = new StringBuilder();
 		for (int row = 1; row <= N; row++) {
-			result.append(spaces(row-1) + stars(N-row+1));
-			result.append("\n");
+			String line = spaces(row-1) + stars(N-row+1) + "\n";
+			result.append(line);
 		}
 		result.deleteCharAt(result.lastIndexOf("\n"));
 		System.out.print(result);

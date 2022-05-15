@@ -14,8 +14,7 @@ public class Baekjoon_printStar_b3_2444 {
 			if (row <= N) {
 				line = spaces(N - row) + stars(2 * row - 1);
 			} else {
-				line = spaces(row - N) + stars(4 * N - 2 * row - 1);
-				// line = spaces(row - N) + stars(2*N - 2*(row-N) - 1);
+				line = spaces(row - N) + stars(4 * N - 2 * row - 1);// line = spaces(row - N) + stars(2*N - 2*(row-N) - 1);
 			}
 			result.append(line + "\n");
 		}

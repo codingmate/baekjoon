@@ -15,6 +15,7 @@ public class Baekjoon_printStar_b3_10992 {
 					+ (row != N ? spaces(2 * row - 3)
 							: stars(2 * row - 3))
 					+ (row != 1 ? stars(1) : "");
+			rowLine += "\n";
 			result.append(rowLine + "\n");
 		}
 		result.deleteCharAt(result.lastIndexOf("\n"));
