@@ -15,7 +15,7 @@ public class Baekjoon_printStar_b3_10995 {
 		}
 		for (int row = 1; row <= N; row++) {
 			String rowLine = (row % 2 == 0 ? " " : "")
-					+ set.toString() + "\n";
+						   + set.toString() + "\n";
 			result.append(rowLine);
 		}
 		result.deleteCharAt(result.lastIndexOf("\n"));
