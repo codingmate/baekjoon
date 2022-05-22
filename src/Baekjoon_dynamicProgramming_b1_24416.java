@@ -6,11 +6,12 @@ class Baekjoon_dynamicProgramming_b1_24416 {
     static int n;
     static int executeCount1 = 0;
     static int executeCount2 = 0;
-    static int[] tempFibonacci = new int[4];
+    static int[] tempFibonacci;
     public static void main(String[] args) throws Exception {
         n = Integer.parseInt(br.readLine());
+        tempFibonacci = new int[n];
+        tempFibonacci[0] = 1;
         tempFibonacci[1] = 1;
-        tempFibonacci[2] = 2;
         fib(n);
         fibonacci(n);
 
@@ -18,8 +19,8 @@ class Baekjoon_dynamicProgramming_b1_24416 {
     }
 
     public static long fib(int number) {
-        executeCount1++;
         if (number == 1 || number == 2) {
+            executeCount1++;
             return 1;
         }
         else {
@@ -29,12 +30,14 @@ class Baekjoon_dynamicProgramming_b1_24416 {
 
     public static long fibonacci(int number){
         long result = 0;
-        executeCount2++;
         if ( number == 1 || number == 2 ) {
+            executeCount2++;
         } else {
-            for ( int i = 3; i <= number; i++ ){
-                fibonacci(i) // ing
-            )
+            for ( int index = 2; index < number; index++ ){
+                executeCount2++;
+                 tempFibonacci[index] = tempFibonacci[index-1] = tempFibonacci[index-2];
+            }
+            return result;
         }
         
 
