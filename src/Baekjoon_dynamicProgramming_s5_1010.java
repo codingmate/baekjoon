@@ -26,19 +26,25 @@ class Baekjoon_dynamicProgramming_s5_1010 {
     }
 
     public static long factorial( int number ){
-        long result = 1;
-        for ( int i = 2; i <= number; i++ )
-            result *= number;
-        return result;
+        long F = 1;
+        for ( int i = 2; i <= number; i++ ){
+            F *= i;
+        }
+
+        return F;
     }
     
     public static long combination ( int n, int r ){   
-        long result = 1;
-        for ( int i = n; i > r ; i-- ){
-            result *= i;
+        long C = 1;
+        
+        int maxR = (n-r) > r ? (n-r) : r;
+        int minR = (n-r) < r ? (n-r) : r;
+        for ( int i = n; i > maxR ; i-- ){
+            C *= i;
         }
-        result /= factorial(r);
-        return factorial(n) / (factorial(n-r) * factorial(r));
+
+        C /= factorial(minR);
+        return C;
     }
     
 }
