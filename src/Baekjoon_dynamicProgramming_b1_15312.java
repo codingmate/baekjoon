@@ -1,6 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-class Main {
+class Baekjoon_dynamicProgramming_b1_15312 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static String nameLine1;
