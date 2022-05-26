@@ -11,18 +11,17 @@ class Baekjoon_dynamicProgramming_s4_13699 {
         
         n = Integer.parseInt(br.readLine());
         valueList.add(1l);
-        for ( int i = 1; i < n; i++ ){
+        for ( int i = 1; i <= n; i++ ){
             valueList.add(valueSetting(i));
         }
-        for ( Long value : valueList ){
-            System.out.println(value);
-        }
+        
+        System.out.println(valueList.get(n));
     }
 
     public static long valueSetting (int num) {
         Long value = 0l;
         for ( int i = 0; i < num; i++ ){
-            value += valueList.get(i) * valueList.get(num-i);
+            value += valueList.get(i) * valueList.get(num-1-i);
         }
         return value;
     }

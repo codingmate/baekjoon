@@ -12,10 +12,7 @@ class Baekjoon_dynamicProgramming_s3_1463 {
             
             while( N > 1 ){
 
-                
-            } 
-            
-            
+            }
         
         
         
