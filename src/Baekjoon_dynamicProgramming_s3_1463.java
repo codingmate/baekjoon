@@ -22,13 +22,9 @@ class Baekjoon_dynamicProgramming_s3_1463 {
             if ( i % 3 == 0 ) counts[i] = counts[i] < (counts[i/3] + 1)
                                                ? counts[i]
                                                : (counts[i/3] + 1);
-
-            System.out.printf("counts[%d] : %d\n", i, counts[i]);
                                                
         }
         br.close();
         System.out.print(counts[N]);
     }
-
-    
 }
