@@ -10,8 +10,7 @@ public class Baekjoon_string_s5_1316 {
         int N = Integer.parseInt(br.readLine());
         int result = 0;
         for ( int i = 0; i < N; i++ ){
-            String str = br.readLine();
-            if ( isGroupStr ( str ) ){
+            if ( isGroupStr ( br.readLine() ) ){
                 result++;
             }
         }
@@ -26,15 +25,15 @@ public class Baekjoon_string_s5_1316 {
                 distinctCharList.add(C);
             }
         }
-
+        
         for ( int i = 0; i < distinctCharList.size(); i++ ){
             Character C = distinctCharList.get(i);
             String doubleC = C.toString() + C.toString();
             while( str.indexOf(doubleC) > -1 ){
-                str = str.replace(doubleC, "");
+                str = str.replace(doubleC, C.toString());
             }
         }
-
+        
         for ( int i = 0; i < distinctCharList.size(); i++ ){
             char C = distinctCharList.get(i);
             if ( str.indexOf(C) != str.lastIndexOf(C) ){
