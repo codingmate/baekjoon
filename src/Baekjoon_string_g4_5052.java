@@ -15,10 +15,6 @@ public class Baekjoon_string_g4_5052 {
             for ( int e = 0; e < n; e++ ){
                 strList.add(br.readLine());
             }
-            
-            for ( int i = 0; i < 10; i++ ){
-                
-            }
         }
     }
 }
