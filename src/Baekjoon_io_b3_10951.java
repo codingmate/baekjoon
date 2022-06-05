@@ -8,19 +8,14 @@ public class Baekjoon_io_b3_10951 {
 
     public static void main(String[] args) throws IOException {
 
-        StringBuilder result = new StringBuilder();
-        String line;
-        while ((line = br.readLine()) != null) {
-            if (!line.equals(""))
-                break;
-            String[] AB = br.readLine().split(" ");
+        String line = new String();
+        while ( (line = br.readLine()) != null && !line.equals("")) {
+
+            String[] AB = line.split(" ");
             int A = Integer.parseInt(AB[0]);
             int B = Integer.parseInt(AB[1]);
             int sum = A + B;
-            result.append(sum + "\n");
+            System.out.println(sum);
         }
-        if (result.length() > 1)
-            result.deleteCharAt(result.length() - 1);
-        System.out.print(result);
     }
 }
