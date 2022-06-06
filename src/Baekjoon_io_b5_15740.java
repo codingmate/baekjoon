@@ -27,7 +27,17 @@ public class Baekjoon_io_b5_15740 {
             B = B.substring(1);
         }
 
+        /* A, B가 0인 경우, isNegative == false로 변환 */
+        for ( int i = 0; i < A.length(); i++ ){
+            if ( A.charAt(i) != '0' ) break; 
+            if ( i == A.length()-1 ) AisNegative = false;
+        }
 
+        for ( int i = 0; i < B.length(); i++ ){
+            if ( B.charAt(i) != '0' ) break;
+            if ( i == B.length()-1 ) BisNegative = false;
+        }
+        
         /* A와 B의 절댓값의 자릿수 맞춰주기 ( 앞을 0으로 채우기 ) */
         int diffLength = A.length() - B.length();
         if ( diffLength > 0 ){
