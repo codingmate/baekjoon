@@ -44,17 +44,18 @@ public class Baekjoon_backtracking_s2_15663 {
             List<Integer> toIdxList = new ArrayList<>();
             graph.add(toIdxList);
             for (int toIdx = 0; toIdx < N; toIdx++) {
-                if (fromIdx != toIdx) {
+
                     boolean isDuplicated = false;
-                    for ( int idx : toIdxList )
-                        if( numberList.get(idx) == numberList.get(toIdx) ){
-                            isDuplicated = true;
-                            break;
+                    if ( numberList.get(fromIdx) == numberList.get(toIdx) ){
+                        for ( int idx : toIdxList ){
+                            if ( numberList.get(idx) == numberList.get(toIdx) ) {
+                                isDuplicated = true;
+                                break;
+                            }
                         }
-                    if ( !isDuplicated )
-                    toIdxList.add(toIdx);
-                }
-                
+                    } 
+                    if( !isDuplicated )
+                        toIdxList.add(toIdx);
             }    
         }
 
@@ -62,7 +63,8 @@ public class Baekjoon_backtracking_s2_15663 {
             dfs(startIdx);
 
         /* 마지막 개행 제거 */
-        result.deleteCharAt(result.length() - 1);
+        if (result.length() > 0)
+            result.deleteCharAt(result.length() - 1);
         System.out.print(result);
     } // main
 
@@ -71,7 +73,7 @@ public class Baekjoon_backtracking_s2_15663 {
 
         for (int toIdx : graph.get(fromIdx))
             if ( stack.size() < M 
-              && stack.indexOf(toIdx) == -1 
+              //&& stack.indexOf(toIdx) == -1 
               //&& numberList.get(fromIdx) <= numberList.get(toIdx)
                )
                 dfs(toIdx);
