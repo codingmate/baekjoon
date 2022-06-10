@@ -39,23 +39,21 @@ public class Baekjoon_backtracking_s2_15663 {
                 distinctNumberList.add(num);
         }
         
-        /* graphList 그리기 */
+        /* grap 그리기 */
         for (int fromIdx = 0; fromIdx < N; fromIdx++) {
             List<Integer> toIdxList = new ArrayList<>();
             graph.add(toIdxList);
             for (int toIdx = 0; toIdx < N; toIdx++) {
-
+                if ( fromIdx != toIdx ){
                     boolean isDuplicated = false;
-                    if ( numberList.get(fromIdx) == numberList.get(toIdx) ){
-                        for ( int idx : toIdxList ){
-                            if ( numberList.get(idx) == numberList.get(toIdx) ) {
-                                isDuplicated = true;
-                                break;
-                            }
-                        }
-                    } 
+                    for ( int idx : toIdxList ) {
+                        if ( numberList.get(idx) == numberList.get(toIdx) )
+                            isDuplicated = true;
+                    }
                     if( !isDuplicated )
                         toIdxList.add(toIdx);
+                }
+                    
             }    
         }
 
