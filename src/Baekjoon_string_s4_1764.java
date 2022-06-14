@@ -11,17 +11,20 @@ public class Baekjoon_string_s4_1764 {
         String[] NM = br.readLine().split(" ");
         int N = Integer.parseInt(NM[0]);
         int M = Integer.parseInt(NM[1]);
-
+        int count = 0;
         Set<String> cantHearSet = new HashSet<>();
         for ( int row = 0; row < N; row++ )
             cantHearSet.add(br.readLine());
         for ( int row = 0; row < M; row++ ){
             String key = br.readLine();
-            if ( cantHearSet.contains(key) )
+            if ( cantHearSet.contains(key) ) {
+                count++;
                 result.append( key + "\n" );
+            }
         }
         if ( result.length() > 1 )
             result.deleteCharAt(result.length() - 1);
+        System.out.println(count);
         System.out.print(result.toString());
     }
 }
