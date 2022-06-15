@@ -32,7 +32,7 @@ public class Baekjoon_backtracking_s2_1182 {
         stack.add(fromIdx);
         
         for ( int toIdx = 0; toIdx < N; toIdx++ ) {
-            if ( m
+            if ( stack.size() < N
               && stack.indexOf(toIdx) == -1
               && fromIdx < toIdx
                ) {
