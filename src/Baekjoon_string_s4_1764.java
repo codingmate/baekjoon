@@ -12,19 +12,21 @@ public class Baekjoon_string_s4_1764 {
         int N = Integer.parseInt(NM[0]);
         int M = Integer.parseInt(NM[1]);
         int count = 0;
-        Set<String> cantHearSet = new HashSet<>();
+        Set<String> cantHearSet = new TreeSet<>();
+        List<Integer> cantHearSeeList = new ArrayList<>();
         for ( int row = 0; row < N; row++ )
             cantHearSet.add(br.readLine());
         for ( int row = 0; row < M; row++ ){
             String key = br.readLine();
             if ( cantHearSet.contains(key) ) {
                 count++;
-                result.append( key + "\n" );
+                cantHearSeeList.add(key);
             }
         }
-        if ( result.length() > 1 )
-            result.deleteCharAt(result.length() - 1);
-        System.out.println(count);
-        System.out.print(result.toString());
+
+        /* cantHearSeeList 문자열 오름차순 정렬 필요 */
+        
+        for ( String s : cantHearSeeList ) {
+            result.append( s + "\n" );
     }
 }
