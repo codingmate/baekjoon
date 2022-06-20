@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Queue;
 import java.util.LinkedList;
 
 public class Baekjoon_bfs_s1_2178 {
@@ -10,7 +11,7 @@ public class Baekjoon_bfs_s1_2178 {
     static int M = 0;
     static int[][] graph;
     static int[][] distances;
-    static List<Point> queue = new LinkedList<>();
+    static Queue<Point> queue = new LinkedList<>();
     public static void main(String[] args) throws Exception {
         String[] NM = br.readLine().split(" ");
         N = Integer.parseInt(NM[0]);
@@ -33,9 +34,8 @@ public class Baekjoon_bfs_s1_2178 {
         distances[0][0] = 1;
         while( queue.size() > 0 ) {
             
-            Point p = queue.get(0);
+            Point p = queue.poll();
             bfs(p);
-            queue.remove(0);
         }
         
         System.out.print(distances[N-1][M-1]);
