@@ -29,22 +29,9 @@ public class Baekjoon_bfs_s1_2178 {
             }
         }
 
-        // for ( int row = 0; row < N; row ++ ){
-        //     for ( int col = 0; col < M; col ++ ) {
-        //         System.out.print(graph[row][col] + " ");
-        //     }
-        //     System.out.println();
-        // }
-        for ( int row = 0; row < N; row ++ ){
-            for ( int col = 0; col < M; col ++ ) {
-                System.out.print(distances[row][col] + " ");
-            }
-            System.out.println();
-        }
-        
         Point start = new Point(0, 0);
         bfs(start);
-        distances[0][0] = 0;
+        distances[0][0] = 1;
         while( queue.size() > 0 ) {
             
             Point p = queue.get(0);
@@ -52,17 +39,11 @@ public class Baekjoon_bfs_s1_2178 {
             queue.remove(0);
         }
 
-        // for ( int row = 0; row < N; row ++ ){
-        //     for ( int col = 0; col < M; col ++ ) {
-        //         System.out.print((distances[row][col] == Integer.MAX_VALUE ? "F" : distances[row][col]) + " ");
-        //     }
-        //     System.out.println();
-        // }
-        
+        System.out.print(distances[N-1][M-1]);
+
     }
 
     public static void bfs( Point p ) {
-
         distances[p.row][p.col] = p.getMinDistance();
         for ( Point po : p.getNextAblePointList() ) {
             queue.add(po);
@@ -93,7 +74,6 @@ public class Baekjoon_bfs_s1_2178 {
                 distance = distance > (distances[this.row+1][this.col] + 1)
                          ? distances[this.row+1][this.col] + 1
                          : distance;
-            System.out.println(distance);
             if ( this.col > 0 
             && graph[this.row][this.col-1] == 1 
             && distances[this.row][this.col-1] != -1 ) 
@@ -113,11 +93,10 @@ public class Baekjoon_bfs_s1_2178 {
 
         public List<Point> getNextAblePointList() {
 
-            
             List<Point> nextAblePointList = new ArrayList<>();
             if ( this.row > 0 
             && graph[this.row-1][this.col] == 1 
-            && distances[this.row-1][this.col] == -1  ) {
+            && distances[this.row-1][this.col] == -1 ) {
                 nextAblePointList.add(new Point(this.row-1, this.col));
             }
             if ( this.row < N - 1 
