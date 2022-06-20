@@ -44,9 +44,7 @@ public class Baekjoon_bfs_s1_2178 {
 
     public static void bfs( Point p ) {
         distances[p.row][p.col] = p.getMinDistance();
-        for ( Point po : p.getNextAblePointList() ) {
-            queue.add(po);
-        }
+        p.insertNextAblePointList();
     }
         
     public static class Point {
@@ -90,30 +88,28 @@ public class Baekjoon_bfs_s1_2178 {
             return distance;
         }
 
-        public List<Point> getNextAblePointList() {
+        public void insertNextAblePointList() {
 
-            List<Point> nextAblePointList = new LinkedList<>();
             if ( this.row > 0 
             && graph[this.row-1][this.col] == 1 
             && distances[this.row-1][this.col] == -1 ) {
-                nextAblePointList.add(new Point(this.row-1, this.col));
+                queue.add(new Point(this.row-1, this.col));
             }
             if ( this.row < N - 1 
             && graph[this.row+1][this.col] == 1 
             && distances[this.row+1][this.col] == -1 ) {
-                nextAblePointList.add(new Point(this.row+1, this.col));
+                queue.add(new Point(this.row+1, this.col));
             }
             if ( this.col > 0 
             && graph[this.row][this.col-1] == 1 
             && distances[this.row][this.col-1] == -1 ) {
-                nextAblePointList.add(new Point(this.row, this.col-1));
+                queue.add(new Point(this.row, this.col-1));
             }
             if ( this.col < M - 1 
             && graph[this.row][this.col+1] == 1 
             && distances[this.row][this.col+1] == -1 ) {
-                nextAblePointList.add(new Point(this.row, this.col+1));
+                queue.add(new Point(this.row, this.col+1));
             }
-            return nextAblePointList;
         }
 
         public String toString() {
