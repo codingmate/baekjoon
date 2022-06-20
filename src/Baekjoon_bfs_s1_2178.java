@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Baekjoon_bfs_s1_2178 {
@@ -38,7 +37,7 @@ public class Baekjoon_bfs_s1_2178 {
             bfs(p);
             queue.remove(0);
         }
-
+        
         System.out.print(distances[N-1][M-1]);
 
     }
@@ -93,7 +92,7 @@ public class Baekjoon_bfs_s1_2178 {
 
         public List<Point> getNextAblePointList() {
 
-            List<Point> nextAblePointList = new ArrayList<>();
+            List<Point> nextAblePointList = new LinkedList<>();
             if ( this.row > 0 
             && graph[this.row-1][this.col] == 1 
             && distances[this.row-1][this.col] == -1 ) {
