@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.List;
 import java.util.Queue;
 import java.util.LinkedList;
 
@@ -24,27 +23,59 @@ public class Baekjoon_bfs_s1_2178 {
                 graph[row][col] = Integer.parseInt(numbers[col]);
                 if ( graph[row][col] == 0 ) 
                     distances[row][col] = Integer.MAX_VALUE;
-                else
-                    distances[row][col] = -1;
             }
         }
 
         Point start = new Point(0, 0);
-        bfs(start);
         distances[0][0] = 1;
-        while( queue.size() > 0 ) {
-            
-            Point p = queue.poll();
-            bfs(p);
+        bfs(start);
+        while( !queue.isEmpty() ) {
+            bfs(queue.poll());
         }
-        
+        br.close();
         System.out.print(distances[N-1][M-1]);
 
     }
 
     public static void bfs( Point p ) {
-        distances[p.row][p.col] = p.getMinDistance();
-        p.insertNextAblePointList();
+        int cost = distances[p.row][p.col];
+        int nextRow, nextCol;
+
+        if ( p.row > 0 ) {
+            nextRow = p.row-1;
+            nextCol = p.col;
+            if ( graph[nextRow][nextCol] == 1 && distances[nextRow][nextCol] == 0 ) {
+                distances[nextRow][nextCol] = cost + 1;
+                queue.add(new Point(nextRow, nextCol));
+            }
+        }
+        if ( p.col > 0 ) {
+            nextRow = p.row;
+            nextCol = p.col-1;
+            if ( graph[nextRow][nextCol] == 1 && distances[nextRow][nextCol] == 0 ) {
+                distances[nextRow][nextCol] = cost + 1;
+                queue.add(new Point(nextRow, nextCol));
+            }
+        }
+
+        if ( p.row < N-1 ) {
+            nextRow = p.row+1;
+            nextCol = p.col;
+            if ( graph[nextRow][nextCol] == 1 && distances[nextRow][nextCol] == 0 ) {
+                distances[nextRow][nextCol] = cost + 1;
+                queue.add(new Point(nextRow, nextCol));
+            }
+        }
+
+        if ( p.col < M-1 ) {
+            nextRow = p.row;
+            nextCol = p.col+1;
+            if ( graph[nextRow][nextCol] == 1 && distances[nextRow][nextCol] == 0 ) {
+                distances[nextRow][nextCol] = cost + 1;
+                queue.add(new Point(nextRow, nextCol));
+            }
+        }
+
     }
         
     public static class Point {
@@ -53,67 +84,6 @@ public class Baekjoon_bfs_s1_2178 {
         public Point( int row, int col ) {
             this.row = row;
             this.col = col;
-        }
-
-        public int getMinDistance() {
-            int distance = Integer.MAX_VALUE;
-            
-            if ( this.row > 0 
-            && graph[this.row-1][this.col] == 1 
-            && distances[this.row-1][this.col] != -1 ) 
-                distance = distance > (distances[this.row-1][this.col] + 1)
-                         ? distances[this.row-1][this.col] + 1
-                         : distance;
-
-            if ( this.row < N - 1 
-            && graph[this.row+1][this.col] == 1 
-            && distances[this.row+1][this.col] != -1 )
-                distance = distance > (distances[this.row+1][this.col] + 1)
-                         ? distances[this.row+1][this.col] + 1
-                         : distance;
-            if ( this.col > 0 
-            && graph[this.row][this.col-1] == 1 
-            && distances[this.row][this.col-1] != -1 ) 
-                distance = distance > (distances[this.row][this.col-1] + 1)
-                         ? distances[this.row][this.col-1] + 1
-                         : distance;
-
-            if ( this.col < M - 1 
-            && graph[this.row][this.col+1] == 1 
-            && distances[this.row][this.col+1] != -1 )
-                distance = distance > (distances[this.row][this.col+1] + 1)
-                         ? distances[this.row][this.col+1] + 1
-                         : distance;
-            
-            return distance;
-        }
-
-        public void insertNextAblePointList() {
-
-            if ( this.row > 0 
-            && graph[this.row-1][this.col] == 1 
-            && distances[this.row-1][this.col] == -1 ) {
-                queue.add(new Point(this.row-1, this.col));
-            }
-            if ( this.row < N - 1 
-            && graph[this.row+1][this.col] == 1 
-            && distances[this.row+1][this.col] == -1 ) {
-                queue.add(new Point(this.row+1, this.col));
-            }
-            if ( this.col > 0 
-            && graph[this.row][this.col-1] == 1 
-            && distances[this.row][this.col-1] == -1 ) {
-                queue.add(new Point(this.row, this.col-1));
-            }
-            if ( this.col < M - 1 
-            && graph[this.row][this.col+1] == 1 
-            && distances[this.row][this.col+1] == -1 ) {
-                queue.add(new Point(this.row, this.col+1));
-            }
-        }
-
-        public String toString() {
-            return this.row + " " + this.col;
         }
     }
 }
