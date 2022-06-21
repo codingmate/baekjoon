@@ -10,6 +10,8 @@ public class Baekjoon_bfs_s1_2178 {
     static int M = 0;
     static int[][] graph;
     static int[][] distances;
+    static int[] deltaRow = {-1, 1, 0, 0};
+    static int[] deltaCol = {0, 0, -1, 1};
     static Queue<Point> queue = new LinkedList<>();
     public static void main(String[] args) throws Exception {
         String[] NM = br.readLine().split(" ");
@@ -39,41 +41,17 @@ public class Baekjoon_bfs_s1_2178 {
 
     public static void bfs( Point p ) {
         int cost = distances[p.row][p.col];
-        int nextRow, nextCol;
-
-        if ( p.row > 0 ) {
-            nextRow = p.row-1;
-            nextCol = p.col;
-            if ( graph[nextRow][nextCol] == 1 && distances[nextRow][nextCol] == 0 ) {
-                distances[nextRow][nextCol] = cost + 1;
-                queue.add(new Point(nextRow, nextCol));
-            }
-        }
-        if ( p.col > 0 ) {
-            nextRow = p.row;
-            nextCol = p.col-1;
-            if ( graph[nextRow][nextCol] == 1 && distances[nextRow][nextCol] == 0 ) {
-                distances[nextRow][nextCol] = cost + 1;
-                queue.add(new Point(nextRow, nextCol));
-            }
-        }
-
-        if ( p.row < N-1 ) {
-            nextRow = p.row+1;
-            nextCol = p.col;
-            if ( graph[nextRow][nextCol] == 1 && distances[nextRow][nextCol] == 0 ) {
-                distances[nextRow][nextCol] = cost + 1;
-                queue.add(new Point(nextRow, nextCol));
-            }
-        }
-
-        if ( p.col < M-1 ) {
-            nextRow = p.row;
-            nextCol = p.col+1;
-            if ( graph[nextRow][nextCol] == 1 && distances[nextRow][nextCol] == 0 ) {
-                distances[nextRow][nextCol] = cost + 1;
-                queue.add(new Point(nextRow, nextCol));
-            }
+        
+        for ( int i = 0; i < deltaCol.length; i++ ) {
+            int nextRow = p.row + deltaRow[i];
+            int nextCol = p.col + deltaCol[i];
+            if ( nextRow > -1 && nextRow < N
+              && nextCol > -1 && nextCol < M ) {
+                if ( graph[nextRow][nextCol] == 1 && distances[nextRow][nextCol] == 0 ) {
+                    distances[nextRow][nextCol] = cost + 1;
+                    queue.add(new Point(nextRow, nextCol));
+                }    
+              }
         }
 
     }
