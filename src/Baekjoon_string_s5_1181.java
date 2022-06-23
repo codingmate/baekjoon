@@ -23,7 +23,7 @@ public class Baekjoon_string_s5_1181 {
             }
         }
         
-        System.out.println(wordList)
+        System.out.println(wordList);
         
                 
         
