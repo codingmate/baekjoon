@@ -14,7 +14,7 @@ public class Baekjoon_string_b1_10798 {
             lineList.add(line);
             if ( line.length() > maxLineLength )
                 maxLineLength = line.length();
-        }
+        }   
 
         StringBuilder result = new StringBuilder();
 
