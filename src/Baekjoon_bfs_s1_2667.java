@@ -3,8 +3,8 @@ import java.io.InputStreamReader;
 import java.util.Queue;
 import java.util.LinkedList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Baekjoon_bfs_s1_2667 {
     
@@ -40,30 +40,17 @@ public class Baekjoon_bfs_s1_2667 {
             
         }
         
-        // for ( int[] row : graph ) {
-        //     for ( int col : row )
-        //         System.out.print(col + " ");
-        //     System.out.println();
-        // }
         System.out.println(cost-1);
-        for ( int i = 2; i <= cost; i++ ) {
-            System.out.println(costCountsMap.get(i));
-        }
-        List<Integer> costCountList = new ArrayList<>();
+        
+        Set<Integer> costCountSet = new TreeSet<>();
+
         for ( Integer e : costCountsMap.values() ) {
-            costCountList.add(e);
+            costCountSet.add(e);
         }
+
         /* Selection Sort ASC*/
-        for ( int i = 0; i < costCountList.size(); i++ ) {
-            int costI = costCountList.get(i);
-            for( int j = i + 1; j < costCountList.size(); j++ ) {
-                int costJ = costCountList.get(j);
-                if ( costI > costJ ) {
-                    costCountList.set(i, costJ);
-                    costCountList.set(j, costI);
-                    break;
-                }
-            }
+        for ( int e : costCountSet ) {
+            System.out.println(e);
         }
 
         br.close();
