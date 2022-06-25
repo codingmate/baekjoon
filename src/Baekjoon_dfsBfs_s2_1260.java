@@ -45,6 +45,7 @@ class Baekjoon_dfsBfs_s2_1260 {
         
         for ( int to = 1; to < N; to++ ) {
             if( graph[from][to] == 1 && !visited[to] )
+                queue.add(to);
                 
         }
     }

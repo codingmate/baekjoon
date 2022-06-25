@@ -34,14 +34,20 @@ class Baekjoon_dfsBfs_s3_2606 {
             queue.remove(0);
             bfs(node);
         }
+
+        int count = 0;
+        for ( int i = 2; i < visited.length; i++ ) 
+            if ( visited[i] )
+                count++;
+        System.out.print(count);
         
     } // main
 
     static void bfs( int from ) {
-        
-        for ( int to = 1; to < N; to++ ) {
+        visited[from] = true;
+        for ( int to = 1; to <= N; to++ ) {
             if( graph[from][to] == 1 && !visited[to] )
-               
+               queue.add(to);
         }
     }
     
