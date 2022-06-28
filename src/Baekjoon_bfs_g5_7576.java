@@ -40,14 +40,20 @@ class Baekjoon_bfs_g5_7576 {
                 bfs(d);
             }
             
-            for ( int[] row : graph ) {
-                for ( int col : row ) {
-                    System.out.print(col + " ");
-                }
-                System.out.println();
-            }
-            System.out.println("\n\n");
+            // for ( int[] row : graph ) {
+            //     for ( int col : row ) {
+            //         System.out.print(col + " ");
+            //     }
+            //     System.out.println();
+            // }
+            // System.out.println("\n\n");
         }
+        if ( isExist0() ) {
+            System.out.print(-1);
+        } else {
+            System.out.print(getGraphMax() - 1);
+        }
+
 
     } // main
 
@@ -68,8 +74,29 @@ class Baekjoon_bfs_g5_7576 {
                 queue.add(new Dot(nextRow, nextCol));
               }
         }
+
+    }
+
+    static boolean isExist0 () {
         
-        
+        for ( int[] row : graph ) {
+            for ( int col : row ) {
+                if ( col == 0 )
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    static int getGraphMax () {
+        int max = Integer.MIN_VALUE;
+        for ( int[] row : graph ) {
+            for ( int col : row ) {
+                if ( col > max )
+                    max = col;
+            }
+        }
+        return max;
     }
 
     static class Dot {
