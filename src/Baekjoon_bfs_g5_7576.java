@@ -48,6 +48,8 @@ class Baekjoon_bfs_g5_7576 {
             // }
             // System.out.println("\n\n");
         }
+
+        
         if ( isExist0() ) {
             System.out.print(-1);
         } else {
