@@ -1,4 +1,3 @@
-package src;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 public class Baekjoon_string_b2_10988 {
