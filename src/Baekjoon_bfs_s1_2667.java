@@ -1,3 +1,4 @@
+package src;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Queue;
@@ -5,6 +6,9 @@ import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Baekjoon_bfs_s1_2667 {
     
@@ -16,7 +20,8 @@ public class Baekjoon_bfs_s1_2667 {
     static int[] deltaCol = {0, 0, -1, 1};
     static Queue<Point> queue = new LinkedList<>();
     static int cost = 1;
-    static HashMap<Integer, Integer> costCountsMap = new HashMap<Integer, Integer>();
+    static HashMap<Integer, Integer> costCountMap = new HashMap<Integer, Integer>();
+    static List<Integer> countList = new ArrayList<>();
     public static void main(String[] args) throws Exception {
         String[] NM = br.readLine().split(" ");
         
@@ -41,18 +46,22 @@ public class Baekjoon_bfs_s1_2667 {
         }
         
         System.out.println(cost-1);
+
+        for ( Integer e : costCountMap.values() ) {
+            countList.add(e);
+        }
         
-        Set<Integer> costCountSet = new TreeSet<>();
-
-        for ( Integer e : costCountsMap.values() ) {
-            costCountSet.add(e);
-        }
-
         /* Selection Sort ASC*/
-        for ( int e : costCountSet ) {
-            System.out.println(e);
+        Collections.sort(countList);
+        StringBuilder result = new StringBuilder();
+        for ( int e : countList ) {
+            result.append(e + " \n" );
+        }
+        if ( result.length() > 0 ) {
+            result.deleteCharAt(result.lastIndexOf("\n"));
         }
 
+        System.out.print(result.toString());
         br.close();
 
     }
@@ -74,9 +83,9 @@ public class Baekjoon_bfs_s1_2667 {
               && nextCol > -1 && nextCol < M ) {
                 if ( graph[nextRow][nextCol] == 1 ) {
                     graph[nextRow][nextCol] = cost;
-                    costCountsMap.put( cost
-                                     , costCountsMap.containsKey(cost) 
-                                     ? (costCountsMap.get(cost) + 1)
+                    costCountMap.put( cost
+                                     , costCountMap.containsKey(cost) 
+                                     ? (costCountMap.get(cost) + 1)
                                      : 1 );
                     queue.add(new Point(nextRow, nextCol));
                 }    
