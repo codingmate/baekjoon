@@ -51,7 +51,6 @@ public class Baekjoon_bfs_s1_2667 {
             countList.add(e);
         }
         
-        /* Selection Sort ASC*/
         Collections.sort(countList);
         StringBuilder result = new StringBuilder();
         for ( int e : countList ) {
