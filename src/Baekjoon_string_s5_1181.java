@@ -41,24 +41,23 @@ public class Baekjoon_string_s5_1181 {
         };
         ArrayList<String> wordASCList = new ArrayList<>(wordSet);
         //Collections.sort(wordASCList, comparator);
-        Collections.sort(wordASCList, new Comparator<String>(){
-            @Override
-            public int compare(String s1, String s2) {
-                if ( s1.length() > s2.length() ) {
-                    return 1;
-                } else if ( s1.length() < s2.length() ) {
-                    return -1;
-                } else {
-                    if ( s1.compareTo(s2) < 0 ) { 
-                        return -1;
-                    } else if ( s1.compareTo(s2) > 0 ) {
-                        return 1;
-                    } else {
-                        return 0;
-                    }
-                }
-            }
-        });
+        Collections.sort(wordASCList, (s1, s2) -> s1.length()-s2.length()
+        // {
+        //     if ( s1.length() > s2.length() ) {
+        //         return 1;
+        //     } else if ( s1.length() < s2.length() ) {
+        //         return -1;
+        //     } else {
+        //         if ( s1.compareTo(s2) < 0 ) { 
+        //             return -1;
+        //         } else if ( s1.compareTo(s2) > 0 ) {
+        //             return 1;
+        //         } else {
+        //             return 0;
+        //         }
+        //     }
+        // }
+        );
 
         StringBuilder result = new StringBuilder();
         for ( String s : wordASCList ) {
