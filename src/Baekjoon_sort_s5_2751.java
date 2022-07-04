@@ -12,8 +12,11 @@ public class Baekjoon_sort_s5_2751 {
             numArr[i] = Integer.parseInt(br.readLine());
         Arrays.sort(numArr);
 
+        StringBuilder result = new StringBuilder();
         for ( int i = 0; i < N; i++ ) 
-            System.out.println(numArr[i]);
+            result.append(numArr[i] + "\n");
+
+        System.out.print(result.toString());
         
         br.close();
     } // main
