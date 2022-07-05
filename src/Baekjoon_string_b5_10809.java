@@ -1,4 +1,5 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Baekjoon_string_b5_10809 {
     public static void main (String[] args) throws Exception {
@@ -14,3 +15,4 @@ public class Baekjoon_string_b5_10809 {
         System.out.print(result.toString());
     }
 }
+
