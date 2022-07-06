@@ -44,12 +44,12 @@ public class Baekjoon_bfs_s1_2667 {
             countList.add(count);
         }
         
-        // for ( int[] line : matrix) {
-        //     for ( int element : line) {
-        //         System.out.print(element + " ");
-        //     }
-        //     System.out.println();
-        // }
+        for ( int[] line : matrix) {
+            for ( int element : line) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
         StringBuilder result = new StringBuilder();
         result.append((value-1) + "\n");
         Collections.sort(countList);

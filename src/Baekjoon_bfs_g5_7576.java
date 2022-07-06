@@ -1,3 +1,4 @@
+package src;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -11,7 +12,6 @@ class Baekjoon_bfs_g5_7576 {
     static int M;
     static int[][] graph;
     static List<Dot> queue = new LinkedList<>();
-    static List<Dot> startDotList = new ArrayList<>();
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
     
@@ -26,27 +26,26 @@ class Baekjoon_bfs_g5_7576 {
             for ( int j = 0 ; j < M; j++ ) {
                 graph[i][j] = Integer.parseInt(row[j]);
                 if( graph[i][j] == 1 )
-                    startDotList.add(new Dot(i, j));
+                    queue.add(new Dot(i, j));
             }
                 
         }
 
         
-        for ( int i = 0; i < startDotList.size(); i++ ) {
-            bfs(startDotList.get(i));
-            while( queue.size() > 0 ) {
-                Dot d = queue.get(0);
-                queue.remove(0);
-                bfs(d);
-            }
-            
+        
+        while( queue.size() > 0 ) {
+            // System.out.println("\n\n");
             // for ( int[] row : graph ) {
             //     for ( int col : row ) {
             //         System.out.print(col + " ");
             //     }
             //     System.out.println();
             // }
-            // System.out.println("\n\n");
+            
+            Dot d = queue.get(0);
+            queue.remove(0);
+            bfs(d);
+            
         }
 
         
