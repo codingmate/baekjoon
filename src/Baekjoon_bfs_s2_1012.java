@@ -35,29 +35,26 @@ class Baekjoon_bfs_s2_1012 {
                 graph[row][col] = 1;
             } // for : j
             
-            
-            Dot d;
             int count = 1;
-            // graph에 1이 존재할 때
-            while ( (d = getFirst1Dot()) != null ) {
-                count++;
-                // 첫 1에서 bfs 시작
-                bfs(d, count);
-                
-                while ( queue.size() > 0 ) {
-                    Dot dot = queue.get(0);
-                    queue.remove(0);
-                    bfs(dot, count);
-                }
-            }   
+            for ( int row = 0; row < ROW; row++ )
+                for ( int col = 0; col < COL; col++ )
+                    if ( graph[row][col] == 1 ){
+                        count++;
+                        queue.add(new Dot(row, col));
+                        bfs(count);
+                    }
+            
             result.append( (count-1) + "\n" );
         } // for : i
         result.deleteCharAt(result.length()-1);
-        System.out.print(result);        
+        System.out.print(result.toString());        
     } // main
 
-    static void bfs( Dot d, int count ) {
-        graph[d.row][d.col] = count;
+    static void bfs( int count ) {
+        while ( queue.size() > 0 ) {
+            Dot d = queue.get(0);
+            queue.remove(0);
+            graph[d.row][d.col] = count;
             for ( int i = 0; i < 4; i++ ) {
                 int nextRow = d.row + dRow[i];
                 int nextCol = d.col + dCol[i];
@@ -70,14 +67,8 @@ class Baekjoon_bfs_s2_1012 {
                     queue.add(new Dot(nextRow, nextCol));
                   }
             } // for
-    }
-
-    static Dot getFirst1Dot() {
-        for ( int row = 0; row < ROW; row++ )
-            for ( int col = 0; col < COL; col++ ) 
-                if ( graph[row][col] == 1 )
-                    return new Dot(row, col);
-        return null;
+        }
+        
     }
     
    static class Dot {
