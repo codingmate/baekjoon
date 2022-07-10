@@ -67,8 +67,7 @@ class Baekjoon_bfs_s2_1012 {
                     queue.add(new Dot(nextRow, nextCol));
                   }
             } // for
-        }
-        
+        } // while
     }
     
    static class Dot {
