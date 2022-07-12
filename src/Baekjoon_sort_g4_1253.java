@@ -15,7 +15,8 @@ public class Baekjoon_sort_g4_1253 {
             for ( int i = 0; i < numList.size(); i++ ) {
                 Long numI = numList.get(i);
                 for ( int j = i + 1; j < numList.size(); j++ ) {
-                    sumSet.add(numI + numList.get(j));
+                    if ( sumSet.contains(numI + numList.get(j)) )
+                        sumSet.add(numI + numList.get(j));
                 }
             }
         }
