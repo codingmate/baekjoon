@@ -13,27 +13,30 @@ public class Baekjoon_sort_g4_1253 {
             numList.add(Long.parseLong(num));
         }
 
+        Collections.sort(numList);
+        
         int count = 0;
         for ( int i = 0; i < N; i++ ) {
-            long numI = numList.get(i);
-
+            long I = numList.get(i);
             for ( int j = 0; j < N; j++ ) {
+                if ( i == j ) continue;
+                
 
-                boolean isCounted = false;
-                long numJ = numList.get(j);
-                for ( int k = 0; k < N; k++ ) {
-                    if ( i != j && i != k && j != k ) {
-                        long numK = numList.get(k);
-                        if ( numI == (numJ + numK) ) {
-                            count++;
-                            isCounted = true;
-                        }
+                long J = numList.get(j);
+                if ( I < J )
+                    continue;
+                for ( int k = j + 1; k < N; k++ ) {
+                    long K = numList.get(k);
+                    if ( i == k ) continue;
+                    if ( I == J && K == 0 ) continue;
+
+                    if ( I == J + K ) {
+                        count++;
+                        break;
                     }
                 }
-                if ( isCounted ) {
-                    break;
-                }
-            } // for : j
+            }
+            
         } // for : i
         
         System.out.print(count);
