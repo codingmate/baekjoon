@@ -8,10 +8,12 @@ public class Baekjoon_sort_g4_1253 {
     public static void main(String[] args) throws IOException {
 
         int N = Integer.parseInt(br.readLine());
-        String[] numbers = br.readLine().split(" ");
+        StringTokenizer numberStk = new StringTokenizer(br.readLine(), " ");
         int[] nums = new int[N];
-        for ( int i = 0; i < N; i++ )
-            nums[i] = Integer.parseInt(numbers[i]);
+        
+        for ( int i = 0; numberStk.hasMoreTokens(); i++ )
+            nums[i] = Integer.parseInt(numberStk.nextToken());
+        
         
         Map<Integer, List<String>> sumMap = new HashMap<Integer, List<String>>();
         for ( int i = 0; i < N; i++ ) {
@@ -29,9 +31,9 @@ public class Baekjoon_sort_g4_1253 {
         for ( int i = 0 ; i < N ; i++ ) {
             String num = Integer.toString(nums[i]);
             if ( sumMap.get(nums[i]) != null )
-                for ( String IcJ : sumMap.get(Integer.parseInt(num)) ) {
-                    String[] IJ = IcJ.split(",");
-                    if ( !IJ[0].equals(num) && !IJ[1].equals(num) ) {
+                for ( String IJ : sumMap.get(Integer.parseInt(num)) ) {
+                    StringTokenizer stk = new StringTokenizer(IJ, ",");
+                    if ( !stk.nextToken().equals(num) && !stk.nextToken().equals(num) ) {
                         count++;
                         break;
                     }
