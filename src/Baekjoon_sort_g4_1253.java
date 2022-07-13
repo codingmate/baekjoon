@@ -57,6 +57,7 @@ public class Baekjoon_sort_g4_1253 {
         else if ( count0 == 1 || count0 == 2 ) {
             for ( int i = 0; i < N; i++ ) {
                 int num = nums[i];
+                if ( num == 0 ) continue;
                 if ( sumSet.contains(num)
                   || numCountMap.get(num) > 1)
                 count++;
