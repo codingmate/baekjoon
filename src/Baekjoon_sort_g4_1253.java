@@ -11,10 +11,9 @@ public class Baekjoon_sort_g4_1253 {
         StringTokenizer numberStk = new StringTokenizer(br.readLine(), " ");
         int[] nums = new int[N];
         
-        int start0Idx = -1;
-        int end0Idx = 0;
-        int count0 = 0;
+  
         Map<Integer, Integer> numCountMap = new HashMap<>();
+        int count0 = 0;
         for ( int i = 0; numberStk.hasMoreTokens(); i++ ) {
             
             int num = Integer.parseInt(numberStk.nextToken());
@@ -23,13 +22,8 @@ public class Baekjoon_sort_g4_1253 {
                 numCountMap.put(num, 0);
             numCountMap.put(num, numCountMap.get(num) + 1);
             
-            if ( num == 0 ) {
+            if ( num == 0 )
                 count0++;
-                if ( start0Idx == -1 ) {
-                    start0Idx = i;   
-                }
-                end0Idx = i;
-            }
         }
             
         Arrays.sort(nums);
@@ -57,9 +51,9 @@ public class Baekjoon_sort_g4_1253 {
         else if ( count0 == 1 || count0 == 2 ) {
             for ( int i = 0; i < N; i++ ) {
                 int num = nums[i];
-                if ( num == 0 ) continue;
                 if ( sumSet.contains(num)
-                  || numCountMap.get(num) > 1)
+                  || (num != 0 && numCountMap.get(num) > 1)
+                   )
                 count++;
             }
         }
