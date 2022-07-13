@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.*;
-
 public class Baekjoon_sort_g4_1253 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -66,3 +65,32 @@ public class Baekjoon_sort_g4_1253 {
         //System.out.println(sumMap);
     }
 }
+
+/* TEST CASE
+10
+0 1 2 3 4 5 6 7 8 9
+
+10
+0 0 0 0 4 5 6 7 8 9
+
+10
+1 2 3 4 5 6 7 8 9 10
+
+3
+0 0 0
+
+2
+0 0
+
+1
+0
+
+4
+-1 0 1 0
+
+5
+-1 0 1 0 0
+
+7
+-1 0 1 0 0 3 -3
+ */
