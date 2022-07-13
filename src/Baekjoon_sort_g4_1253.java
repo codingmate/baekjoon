@@ -2,44 +2,43 @@ import java.io.*;
 import java.util.*;
 
 public class Baekjoon_sort_g4_1253 {
-    
+
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public static void main( String[] args ) throws IOException{
-        
+
+    public static void main(String[] args) throws IOException {
+
         int N = Integer.parseInt(br.readLine());
-        String[] nums = br.readLine().split(" ");
-        List<Long> numList = new ArrayList<>();
-        for ( String num : nums ) {
-            numList.add(Long.parseLong(num));
-        }
-
-        Collections.sort(numList);
+        String[] numbers = br.readLine().split(" ");
+        int[] nums = new int[N];
+        for ( int i = 0; i < N; i++ )
+            nums[i] = Integer.parseInt(numbers[i]);
         
-        int count = 0;
+        Map<Integer, List<String>> sumMap = new HashMap<Integer, List<String>>();
         for ( int i = 0; i < N; i++ ) {
-            long I = numList.get(i);
-            for ( int j = 0; j < N; j++ ) {
-                if ( i == j ) continue;
-                
-
-                long J = numList.get(j);
-                if ( I < J )
-                    continue;
-                for ( int k = j + 1; k < N; k++ ) {
-                    long K = numList.get(k);
-                    if ( i == k ) continue;
-                    if ( I == J && K == 0 ) continue;
-
-                    if ( I == J + K ) {
+            int I = nums[i];
+            for ( int j = i + 1; j < N; j++ ) {
+                int J = nums[j];
+                int sum = I + J;
+                String IJ = I + "," + J;
+                if ( sumMap.get(sum) == null )
+                    sumMap.put(sum, new ArrayList<String>());
+                sumMap.get(sum).add(IJ);
+            }
+        }
+        int count = 0;
+        for ( int i = 0 ; i < N ; i++ ) {
+            String num = Integer.toString(nums[i]);
+            if ( sumMap.get(nums[i]) != null )
+                for ( String IcJ : sumMap.get(Integer.parseInt(num)) ) {
+                    String[] IJ = IcJ.split(",");
+                    if ( !IJ[0].equals(num) && !IJ[1].equals(num) ) {
                         count++;
                         break;
                     }
                 }
-            }
-            
-        } // for : i
-        
+        }
         System.out.print(count);
         
+        //System.out.println(sumMap);
     }
 }

@@ -30,4 +30,3 @@ public class Baekjoon_string_s4_1302 {
         br.close();
     }
 }
-
