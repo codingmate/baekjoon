@@ -1,11 +1,22 @@
 import java.io.*;
-import java.util.StringTokenizer;
 public class Baekjoon_string_b2_1212 {
     
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         String line = br.readLine();
+        int max0Index = -1;
+        for ( int i = 0; i < line.length(); i++ ) {
+            if ( line.charAt(i) == '0' )
+                max0Index = i;
+            else
+                break;
+        }
+        while( line.length() > 1 && max0Index != -1 ) {
+            line = line.substring(max0Index);
+        }
+
+        System.out.println(line);
 
         String[] octals = line.split("");
 
@@ -34,7 +45,8 @@ public class Baekjoon_string_b2_1212 {
             //System.out.printf("octal : %s, toBynary : %s\n", octal, toBynary);
         }
 
-        while ( result.indexOf("0") == 0 ) {
+        while ( result.indexOf("0") == 0 
+             && !line.equals("0")) {
             result.deleteCharAt(0);
         }
 
