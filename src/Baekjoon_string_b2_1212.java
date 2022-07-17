@@ -16,12 +16,11 @@ public class Baekjoon_string_b2_1212 {
             line = line.substring(max0Index);
         }
 
-        System.out.println(line);
 
         String[] octals = line.split("");
 
         StringBuilder result = new StringBuilder();
-
+        
         for ( String octal : octals ) {
             int o = Integer.parseInt(octal);
             String toBynary = new String();
@@ -46,7 +45,7 @@ public class Baekjoon_string_b2_1212 {
         }
 
         while ( result.indexOf("0") == 0 
-             && !line.equals("0")) {
+             && !result.toString().equals("0")) {
             result.deleteCharAt(0);
         }
 
