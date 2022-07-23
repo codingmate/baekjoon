@@ -51,7 +51,6 @@ public class Baekjoon_bfs_s2_2644 {
                     q.add(i);
                 }
             }
-            
         } // while
     }
 
