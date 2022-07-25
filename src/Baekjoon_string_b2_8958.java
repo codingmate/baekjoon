@@ -52,7 +52,6 @@ public class Baekjoon_string_b2_8958 {
         if ( result.length() > 0 )
             result.deleteCharAt(result.length()-1);
         System.out.print(result.toString());
-
     } // main
 
 } // class
